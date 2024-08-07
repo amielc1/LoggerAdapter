@@ -1,10 +1,11 @@
 ﻿using XLogger.LogModel;
 
-namespace XLogger;
-
-public interface IMessagesLog
+namespace XLogger
 {
-    void Debug(MessageLogModel messageLogModel, string msg);
-    void Info(MessageLogModel messageLogModel, string msg);
-    void Error(MessageLogModel messageLogModel, string msg);
+    public interface IMessagesLog
+    {
+        void Debug<T>(MessageLogModel<T> messageLogModel, string msg);
+        void Info<T>(MessageLogModel<T> messageLogModel, string msg);
+        void Error<T>(MessageLogModel<T> messageLogModel, string msg);
+    }
 }

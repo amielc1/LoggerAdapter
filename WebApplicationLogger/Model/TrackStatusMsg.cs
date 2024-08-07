@@ -3,6 +3,6 @@
     public class TrackStatusMsg
     {
         public int TrackId { get; set; }
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }
