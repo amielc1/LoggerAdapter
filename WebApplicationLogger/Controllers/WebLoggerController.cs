@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using WebApplicationLogger.Model;
 using XLogger;
 using XLogger.LogModel;
@@ -39,9 +38,10 @@ namespace WebApplicationLogger.Controllers
                     MessageObject = trackStatusMsg
                 };
 
-                _logger.Debug(messageLogModel, "This is a first messsage"); 
-                _logger.Info(trackStatusMessageLogModel, "This is a first messsage");
-                _logger.Error(trackStatusMessageLogModel, "This is a first messsage");
+                _logger.Debug(messageLogModel, "This is a Debug messsage"); 
+                _logger.Info(trackStatusMessageLogModel, "This is a Info messsage");
+                _logger.Error(trackStatusMessageLogModel, "This is a Error messsage");
+                _logger.Error(trackStatusMessageLogModel, "This is a Error messsage with exeption", new ArgumentException("Status QR"));
 
                 return Ok();
             }

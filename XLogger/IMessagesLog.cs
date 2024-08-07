@@ -6,6 +6,7 @@ namespace XLogger
     {
         void Debug<T>(MessageLogModel<T> messageLogModel, string msg);
         void Info<T>(MessageLogModel<T> messageLogModel, string msg);
-        void Error<T>(MessageLogModel<T> messageLogModel, string msg);
+        void Error<T>(MessageLogModel<T> messageLogModel, string msg, Exception? exception = null);
+
     }
 }

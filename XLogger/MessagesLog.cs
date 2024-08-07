@@ -28,11 +28,24 @@ namespace XLogger
             Log(LogLevel.Error, messageLogModel, msg);
         }
 
-        private void Log<T>(LogLevel logLevel, MessageLogModel<T> messageLogModel, string msg)
+        public void Error<T>(MessageLogModel<T> messageLogModel, string msg, Exception? exception = null)
+        {
+            Log(LogLevel.Error, messageLogModel, msg, exception);
+        }
+
+        private void Log<T>(LogLevel logLevel, MessageLogModel<T> messageLogModel, string msg, Exception? exception = null)
         {
             string serializedMessage = JsonSerializer.Serialize(messageLogModel.MessageObject);
-            _logger.Log(logLevel, "{ServiceId} {MsgId} {MessageObject} {MsgText}",
-                messageLogModel.ServiceId, messageLogModel.MsgId, serializedMessage, msg);
+            if (exception == null)
+            {
+                _logger.Log(logLevel, "{ServiceId} {MsgId} {MessageObject} {MsgText}",
+                    messageLogModel.ServiceId, messageLogModel.MsgId, serializedMessage, msg);
+            }
+            else
+            {
+                _logger.Log(logLevel, exception, "{ServiceId} {MsgId} {MessageObject} {MsgText}",
+                    messageLogModel.ServiceId, messageLogModel.MsgId, serializedMessage, msg);
+            }
         }
     }
 }
